@@ -1,5 +1,6 @@
 from courierman.request import Request
 
+
 request_json = {
     "name": "Basic Auth",
     "event": [
@@ -20,8 +21,8 @@ request_json = {
             "basic": {
                 "username": "postman",
                 "password": "password",
-                "saveHelperData": true,
-                "showPassword": false
+                "saveHelperData": True,
+                "showPassword": False
             }
         },
         "url": "https://postman-echo.com/basic-auth",
@@ -130,8 +131,15 @@ request_json = {
                             "body": "{\"authenticated\":true}"
         }
     ]
-},
+}
 
 
-def test_request():
-    request = Request()
+def test_request_info():
+    request = Request(json=request_json)
+    assert request.name == "Basic Auth"
+
+def test_request_execute():
+    # TODO: we should mock this API
+    request = Request(json=request_json)
+    ans = request.execute()
+    assert ans.status_code == 200

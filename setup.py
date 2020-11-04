@@ -10,4 +10,5 @@ setup(
     download_url='https://github.com/cristianowa/courierman/archive/0.1.zip',
     keywords=['postman'],
     classifiers=[],
+    install_requires=["requests"]
 )
