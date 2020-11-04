@@ -7,6 +7,7 @@ class PostmanEntry(object):
     Postman collection Json entry
 
     """
+
     def __init__(self, filename=None, json=None):
         if filename:
             assert os.path.exists(filename)
@@ -19,7 +20,8 @@ class PostmanEntry(object):
     @property
     def items(self):
         if self._items is None:
-            self._items = [self.create(json=item) for item in self._json["item"]]
+            self._items = [self.create(json=item)
+                           for item in self._json["item"]]
         return self._items
 
     def __repr__(self):
@@ -34,10 +36,10 @@ class PostmanEntry(object):
             assert json is None
             json = cls.load_json(filename)
         if "info" in json:
-            return Collection(filename=filename,json=json)
+            return Collection(filename=filename, json=json)
         if "request" in json:
-            return Request(filename=filename,json=json)
-        return Folder(filename=filename,json=json)
+            return Request(filename=filename, json=json)
+        return Folder(filename=filename, json=json)
 
     @staticmethod
     def load_json(filename):
