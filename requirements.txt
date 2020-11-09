@@ -2,3 +2,6 @@ pytest
 coverage
 autopep8
 requests
+twine
+wheel
+Flask
